@@ -1,0 +1,7 @@
+<% if @post.valid? %>
+  $("#post-list").prepend("<%=j render :partial => "post", :locals => { :post => @post} %>");
+  // 送出内容后，输入框清空。.val("")就是把输入框的值设为空。
+  $("#post_content").val("");
+<% else %>
+  alert("贴文不能为空")
+<% end %>
