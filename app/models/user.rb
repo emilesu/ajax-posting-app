@@ -9,5 +9,11 @@ class User < ApplicationRecord
   def display_name
     self.email.split("@").first
   end
-  
+
+
+  # 按赞功能
+
+  has_many :likes, :dependent => :destroy
+  has_many :liked_posts, :through => :likes, :source => :post
+
 end
