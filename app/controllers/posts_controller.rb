@@ -34,6 +34,25 @@ class PostsController < ApplicationController
     render "like"
   end
 
+
+  # 收藏功能
+
+  def collection
+    @post = Post.find(params[:id])
+    unless @post.find_collection(current_user)    #如果已经按过，就不能再新增
+      Collection.create( :user => current_user, :post => @post)
+    end
+  end
+
+  def uncollection
+    @post = Post.find(params[:id])
+    collection = @post.find_collection(current_user)
+    collection.destroy
+
+    render "collection"
+  end
+
+
   private
 
   def post_params

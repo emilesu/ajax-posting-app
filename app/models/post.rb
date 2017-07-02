@@ -11,4 +11,15 @@ class Post < ApplicationRecord
   def find_like(user)
     self.likes.where( :user_id => user.id).first
   end
+
+
+  # 收藏功能
+
+  has_many :collections, :dependent => :destroy
+  has_many :collectiond_users, :through => :collections, :source => :user
+
+  def find_collection(user)
+    self.collections.where( :user_id => user.id).first
+  end
+
 end

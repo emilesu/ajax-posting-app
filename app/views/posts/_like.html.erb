@@ -4,8 +4,8 @@
 
 <% if current_user # 登录才可以点赞 %>
   <% if post.find_like(current_user) %>
-    <%= link_to "-1", unlike_post_path(post), :method => :post, :remote => true, :class => "btn btn-primary" %>
+    <%= link_to "取消赞", unlike_post_path(post), :method => :post, :remote => true, :class => "btn btn-primary" %>
   <% else %>
-    <%= link_to "+1", like_post_path(post), :method => :post, :remote => true, :class => "btn btn-primary" %>
+    <%= link_to "赞", like_post_path(post), :method => :post, :remote => true, :class => "btn btn-primary" %>
   <% end %>
 <% end %>
