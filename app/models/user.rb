@@ -22,4 +22,11 @@ class User < ApplicationRecord
   has_many :collections, :dependent => :destroy
   has_many :collectiond_posts, :through => :collections, :source => :post
 
+
+  # 核选方块
+
+  def is_admin?
+    role == "admin"
+  end
+
 end
